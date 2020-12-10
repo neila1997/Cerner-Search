@@ -1,0 +1,20 @@
+@media screen and ( max-width: 400px ) {
+    img.responsive { width: 100px; }
+    }
+    @media screen and ( min-width:401px ) and ( max-width: 1920px ) {
+    img.responsive { width: 100px; }
+    }
+    img.responsive { height: auto; }
+
+.navbar{
+    background-color:#0072B8;
+  }
+  
+  .navbar-text{
+  color:whitesmoke !important;
+  }
+  
+  .nav-link{
+  color:whitesmoke !important;
+  font-weight: bold !important;
+  }

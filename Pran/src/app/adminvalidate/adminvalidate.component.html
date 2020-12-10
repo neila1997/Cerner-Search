@@ -1,0 +1,50 @@
+<form>
+  <div class="container top-buffer h3 text-center font-weight-bold">
+    List of Hospitals Partnered or Yet to Be Partnered with us
+  </div>
+  <div class="container">
+    <div class="text-left top-buffer h5 font-weight-bold">
+      Partner Hospitals
+    </div>
+    <table class="table table-striped">
+      <thead class="font-weight-bold text-center">
+        <tr>
+          <th>Hospital Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let hosp of Hospital">
+          <ng-container *ngIf="hosp.verifiedInd == 1">
+            <td width="200px">{{hosp.hospitalName}}</td>
+            <td><button class="btn btn-outline-cerner" (click)="checkHospitalDetails(hosp)">View Details</button>
+            </td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container">
+    <div class="text-left top-buffer h5 font-weight-bold">
+      Yet to Be Partner Hospitals
+    </div>
+    <table class="table table-striped">
+      <thead class="font-weight-bold text-center">
+        <tr>
+          <th>Hospital Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let hosp of Hospital">
+          <ng-container *ngIf="hosp.verifiedInd == 0">
+            <td width="200px">{{hosp.hospitalName}}</td>
+            <td><button class="btn btn-outline-cerner" (click)="checkHospitalDetails(hosp)">Verify Hospital</button>
+            </td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>

@@ -1,0 +1,347 @@
+<form class="form-class" name="myForm" (ngSubmit)="registerHospital()" ngNativeValidate>
+    <div class="container top-buffer h5 head">
+        Hospital Information
+    </div>
+
+    <div class="container border padding-buffer">
+        <div class="form-group row mt-4">
+            <label for="hospital_name" class="col col-md-5 col-form-label">Hospital Name<span
+                    class="required">*</span></label>
+            <div class="col col-md-7">
+                <input type="text" class="form-control" [(ngModel)]="Hospital.hospitalName" name="hospitalName"
+                    required>
+            </div>
+        </div>
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col col-md-5 pt-0">Hospital Type<span class="required">*</span></legend>
+                <div class="col col-md-7">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radio1" id="radio1" value="Government/Public" [(ngModel)]="Hospital.institutionType" required>
+                        <label class="form-check-label" for="radio1">
+                            Government/Public
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radio1" id="radio1" value="Private" [(ngModel)]="Hospital.institutionType" required>
+                        <label class="form-check-label" for="radio1">
+                            Private
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group row">
+            <label for="accreditation" class="col col-md-5 col-form-label">Accreditation<span
+                    class="required">*</span></label>
+            <div class="col col-md-7">
+                <textarea class="form-control" [(ngModel)]="Hospital.hospitalAccredition" name="accreditation" rows="3"
+                    required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col col-md-5 col-form-label">Health Care Provider Type</div>
+            <div class="col col-md-7">
+                <div class="row">
+                    <div *ngFor="let type of hospitalType; let i=index" class="col col-md-4">
+                        <ng-container *ngFor="let type1 of number">
+                        </ng-container>
+                        <label>
+                            <input type="checkbox" [value]="type" id ="type"> {{type}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="reg_num" class="col col-md-5 col-form-label">Hospital Registration Number<span
+                    class="required">*</span></label>
+            <div class="col col-md-7">
+                <input type="text" class="form-control" [(ngModel)]="Hospital.hospitalRegistrationNo"
+                    name="registrationNo" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="reg_num_scan" class="col col-md-5 col-form-label">Registration Number Scanned Copy<span
+                    class="required">*</span></label>
+            <div class="col col-md-7">
+                <input type="file" id="reg_num_scan" required>
+                <p class="help-block">(only JPG, GIF, PNG images with max size: 4 MB allowed)</p>
+            </div>
+        </div>
+    </div>
+    <div class="contact">
+
+        <div class="container top-buffer h5 head">
+            Hospital Address
+        </div>
+
+        <div class="container border padding-buffer ">
+            <div class="form-group row mt-4">
+                <label for="hosp_add" class="col col-md-3 col-form-label">Address<span class="required">*</span></label>
+                <div class="col col-md-9">
+                    <textarea type="text" class="form-control" [(ngModel)]="Hospital.site.location.address"
+                        name="address" rows="3" required></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pincode" class="col col-md-3 col-form-label">Pin Code<span class="required">*</span></label>
+                <div class="col col-md-7">
+                    <div class="form-check-inline row">
+                        <div class="col col-md-12">
+                            <input type="text" class="form-control" [(ngModel)]="Hospital.site.location.pincode"
+                                name="pincode" minlength="6" maxlength="6"
+                                onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                                required autocomplete="new-password" required (change)="get_details()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="district" class="col col-md-3 col-form-label">District<span
+                        class="required">*</span></label>
+                <div class="col col-md-3">
+                    <input type="text" class="form-control" [(ngModel)]="Hospital.site.location.district" name="city"
+                        disabled placeholder="City" required>
+
+                </div>
+                <label for="state" class="col col-md-3 col-form-label">State<span class="required">*</span></label>
+                <div class="col col-md-3">
+                    <input type="text" class="form-control" [(ngModel)]="Hospital.site.location.state" name="state"
+                        disabled placeholder="State" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="area" class="col col-md-3 col-form-label"> Area</label>
+                <div class="col col-md-9">
+                    <select name="area" class="form-control" [(ngModel)]="Hospital.site.location.area" id="area">
+                        <option>Select Area</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container top-buffer h5 head">
+        Hospital Contact Information
+    </div>
+    <div class="container border padding-buffer">
+        <div class="form-group">
+            <div class="row">
+                <label for="hospital_telephone_country" class="col col-md-5 col-form-label">
+                    Telephone / Landline <span class="required">*</span></label>
+                <div class="col col-md-2 offset-md-2">
+                    <input class="form-control" type="text" name="hospital_telephone_country" placeholder="STD Code"
+                        [(ngModel)]="telephone.landlineStd"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        maxlength="5">
+                </div>
+                <div class="col col-md-3">
+                    <input class="form-control" type="text" name="hospital_telephone_no" placeholder="Landline Number"
+                        [(ngModel)]="telephone.landlineNo"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        minlength="7" maxlength="7" (change)="validate_landline()">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Emergency Number
+                </div>
+                <div class="col col-md-2 offset-md-2">
+                    <input class="form-control" type="text" name="hospital_emergency_country" placeholder="STD Code"
+                        [(ngModel)]="telephone.emergencyStd"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        maxlength="5">
+                </div>
+                <div class="col col-md-3">
+                    <input class="form-control" type="text" name="hospital_emergency_no" placeholder="Emergency Number"
+                        [(ngModel)]="telephone.emergencyNo"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        minlength="10" maxlength="10">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Ambulance Phone No.
+                </div>
+                <div class="col col-md-2 offset-md-2">
+                    <input class="form-control" type="text" name="hospital_ambulance_country" placeholder="STD Code"
+                        [(ngModel)]="telephone.ambulanceStd"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        maxlength="5">
+                </div>
+                <div class="col col-md-3">
+                    <input class="form-control" type="text" name="hospital_ambulance_no" placeholder="Ambulance Number"
+                        [(ngModel)]="telephone.ambulanceNo"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        minlength="10" maxlength="10">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Blood Bank Phone No
+                </div>
+                <div class="col col-md-2 offset-md-2">
+                    <input class="form-control" type="text" name="hospital_bb_country" placeholder="STD Code"
+                        [(ngModel)]="telephone.bloodbankStd"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        maxlength="5">
+                </div>
+                <div class="col col-md-3">
+                    <input class="form-control" type="text" name="hospital_bb_no" placeholder="Blood Bank Number"
+                        [(ngModel)]="telephone.bloodbankNo"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        minlength="10" maxlength="10">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Toll Free Number (If any)
+                </div>
+                <div class="col col-md-2 offset-md-2">
+                    <input class="form-control" type="text" name="hospital_toll_free_country" placeholder="STD Code"
+                        [(ngModel)]="telephone.tollfreeStd"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        maxlength="5">
+                </div>
+                <div class="col col-md-3">
+                    <input class="form-control" type="text" name="hospital_toll_free_no" placeholder="Toll Free Number"
+                        [(ngModel)]="telephone.tollfreeNo"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        minlength="10" maxlength="10">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Mobile No.
+                </div>
+                <div class="col col-md-5 offset-md-2">
+                    <input class="form-control" type="text" name="mobile_emergency_no"
+                        [(ngModel)]="Hospital.contact.mobileNo"
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        minlength="10" maxlength="10" (change)="validate_mobile()">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Hospital Primary Email Id<span class="required">*</span>
+                </div>
+                <div class="col col-md-5 offset-md-2">
+                    <input class="form-control" type="email" [(ngModel)]="Hospital.contact.primaryEmailId"
+                        name="hospital_primary_email" required (change)="validate_pemail()">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Hospital Secondary Email Id
+                </div>
+                <div class="col col-md-5 offset-md-2">
+                    <input class="form-control" type="email" [(ngModel)]="Hospital.contact.secondaryEmailId"
+                        name="hospital_secondary_email">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Website URL
+                </div>
+                <div class="col col-md-5 offset-md-2">
+                    <input class="form-control" type="text" [(ngModel)]="Hospital.contact.websiteUrl"
+                        name="hospital_url">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container top-buffer h5 head">
+        Authorised Personnel Details
+    </div>
+    <div class="container padding-buffer border">
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Authorised Personnel Name<span class="required">*</span>
+                </div>
+                <div class="col col-md-5 offset-md-2">
+                    <input class="form-control" type="text" [(ngModel)]="Hospital.admin.personnelName"
+                        name="personnel_name" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Personnel Contact Number<span class="required">*</span>
+                </div>
+                <div class="col col-md-5 offset-md-2">
+                    <input class="form-control" type="text" [(ngModel)]="Hospital.admin.personnelNumber"
+                        name="personnel_contact" required
+                        onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
+                        minlength="10" maxlength="10">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-5 col-form-label">
+                    Personnel Email ID<span class="required">*</span>
+                </div>
+                <div class="col col-md-5 offset-md-2">
+                    <input class="form-control" type="email" [(ngModel)]="Hospital.admin.personnelEmail"
+                        name="personnel_email" (change)="validate_peremail()" required>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="base container ">
+        <p>Indicates Required Fields<span class="required">*</span></p>
+    </div>
+    <div class="form-group">
+        <div class="row top-buffer">
+            <div class="col col-md-22 text-center">
+                <input class="btn btn-outline-cerner btn-xl" type="submit" value="Register">
+            </div>
+        </div>
+    </div>
+</form>
+
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<!-- Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Validation Completed</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Thank you for registering. We are reviewing the provided information and we will mail you once the verification is successful.
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-cerner" data-dismiss="modal" [routerLink]="['']">Return to Home Page</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

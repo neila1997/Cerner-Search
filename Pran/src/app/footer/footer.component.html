@@ -1,0 +1,27 @@
+<div class="container-fluid sticky-bottom margin-buffer text-right">
+    <div class="row">
+        <div class="col col-md-4">
+            <ul class="navbar nav flex-column">
+                <li><span class="nav-text font-weight-bold">About Us</span></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.cerner.com" target="blank">Cerner Official
+                        Site</a></li>
+            </ul>
+        </div>
+        <div class="col col-md-4">
+            <ul class="navbar nav flex-column">
+                <li class="nav-item"><span class="nav-text font-weight-bold">Partner With Us</span></li>
+                <li class="nav-item"><a class="nav-link" [routerLink]="['registration']">Register your Hospital</a></li>
+            </ul>
+        </div>
+        <div class="col col-md-4">
+            <ul class="navbar nav flex-column">
+                <li class="nav-item">
+                    <span class="nav-text font-weight-bold">Cerner Admin Login</span></li>
+                <li class="nav-item" *ngIf="bool"><a class="nav-link" [routerLink]="['cerneradminlogin']">Admin Login</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row float-right">
+        Copyright &#169; 2020 Cerner Corporation. All Rights Reserved.
+    </div>
+</div>

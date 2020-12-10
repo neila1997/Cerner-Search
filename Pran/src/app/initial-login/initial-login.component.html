@@ -1,0 +1,52 @@
+<div class="container top-buffer h5">
+    {{headerText}}
+</div>
+<form class="form-class" [formGroup]="verificationForm">
+    <div class="container border padding-buffer">
+        <div class="form-group row">
+            <div class="col col-md-6">
+                <label for="email">
+                    Email Address
+                </label>
+            </div>
+            <div class="col col-md-6">
+                <input type="email" class="form-control" disabled [(ngModel)]="admin.personnelEmail" name="email"
+                    [ngModelOptions]="{standalone: true}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col col-md-6">
+                <label for="password">
+                    Enter New Password
+                </label>
+            </div>
+            <div class="col col-md-6">
+                <input type="password" class="form-control" value="" formControlName="password1"
+                    [(ngModel)]="admin.personnelPassword" formg>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col col-md-6">
+                <label for="password">
+                    Re-Enter New Password
+                </label>
+            </div>
+            <div class="col col-md-6">
+                <input type="password" class="form-control" value="" formControlName="password2"
+                    (change)="comparePasswords()">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-12 alert alert-info" *ngIf="passwordFlag">
+                Passwords do not match
+            </div>
+        </div>
+
+        <div class="form-group row text-center top-buffer">
+            <div class="col col-md-12">
+                <input type="submit" class="btn btn-outline-cerner" value="Update Password" [disabled]="passwordCheck()"
+                    (click)="updatePassword()">
+            </div>
+        </div>
+    </div>
+</form>

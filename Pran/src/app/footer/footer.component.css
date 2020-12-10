@@ -1,0 +1,30 @@
+.margin-buffer{
+    margin-top: 50px;
+}
+
+.container-fluid{
+    background-color: #0072B8;
+    padding: 20px 20px;
+    color: whitesmoke;
+    font-size: 90%;
+}
+
+.padding-left{
+    margin-left: 50px;
+}
+.padding-top{
+    padding-top: 50px;
+}
+
+.navbar{
+    background-color:#0072B8;
+  }
+  
+  .navbar-text{
+  color:whitesmoke !important;
+  }
+  
+  .nav-link{
+  color:whitesmoke !important;
+  /* font-weight: bold !important; */
+  }
