@@ -1,20 +1,11 @@
-<form class="form-class" name="myForm" ng-init="filldata()">
-    <div class="container top-buffer h5 head">
-        Hospital Validation
-        <p class="disclaimer">Please tick the checkbox if data is correct</p>
-    </div>
+<form class="form-class" name="myForm">
 
     <div class="container top-buffer h5 head">
         Hospital Information
-        <div class="cb ">
-            <input class="form-check-label " type="checkbox" id="firstcb" value="firstcb">
-            <label class="form-check-label t" for="firstcb">
-                Validate
-            </label>
-        </div>
     </div>
-    <div class="container border padding-buffer">
-        <div class="form-group row mt-4">
+    <div class="container border padding-buffer"  >
+        
+        <div class="form-group row mt-4" >
             <label for="hospital_name" class="col col-md-5 col-form-label">Hospital Name<span
                     class="required">*</span></label>
             <div class="col col-md-7">
@@ -80,13 +71,6 @@
 
         <div class="container top-buffer h5 head">
             Hospital Address
-
-            <div class="cb">
-                <input class="form-check-label " type="checkbox" id="secondcb" value="secondcb">
-                <label class="form-check-label t" for="secondcb">
-                    Validate
-                </label>
-            </div>
         </div>
 
         <div class="container border padding-buffer ">
@@ -126,7 +110,9 @@
             <div class="form-group row">
                 <label for="area" class="col col-md-3 col-form-label"> Area</label>
                 <div class="col col-md-9">
-                    <input name="area" type="text" class="form-control" [(ngModel)]="Hospital.site.location.area" id="area" disabled>
+                    <select name="area" class="form-control" [(ngModel)]="Hospital.site.location.area" id="area" disabled>
+                        <option>Select Area</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -134,13 +120,6 @@
 
     <div class="container top-buffer h5 head">
         Hospital Contact Information
-
-        <div class="cb">
-            <input class="form-check-label " type="checkbox" id="thirdcb" value="thirdcb">
-            <label class="form-check-label t" for="thirdcb">
-                Validate
-            </label>
-        </div>
     </div>
     <div class="container border padding-buffer">
         <div class="form-group">
@@ -282,13 +261,6 @@
 
     <div class="container top-buffer h5 head">
         Authorised Personnel Details
-
-        <div class="cb">
-            <input class="form-check-label " type="checkbox" id="fourthcb" value="fourthcb">
-            <label class="form-check-label t" for="fourthcb">
-                Validate
-            </label>
-        </div>
     </div>
     <div class="container padding-buffer border">
         <div class="form-group">
@@ -332,49 +304,3 @@
         <p>Indicates Required Fields<span class="required">*</span></p>
     </div>
 
-    <div class="form-group">
-        <div class="row top-buffer">
-            <div class="col col-md-8 offset-md-3 text-center">
-                <div class="row">
-                    <div class="col col-md-4">
-                        <input class="btn btn-outline-cerner btn-xl" type="submit" value="Needs Resolution"
-                            (click)="sendback()">
-                    </div>
-                    <div class="col col-md-4">
-                        <input class="btn btn-outline-cerner btn-xl" type="submit" value="Validate" (click)="sendForValidation()">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</form>
-<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
-<!-- Modal -->
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Validation Completed</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          The verification for {{Hospital.hospitalName}} has been completed! A registration mail has been sent to the admin at the email id {{Hospital.admin.personnelEmail}}
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-cerner" data-dismiss="modal" [routerLink]="['/adminvalidate']">Admin Main Page</button>
-        </div>
-  
-      </div>
-    </div>
-  </div>
-
-
-
-  

@@ -168,30 +168,7 @@ public class RegisterDaoImpl implements RegisterDao {
 	}
 
 
-//	@Override
-//	public String seeAllHospital(String hospName) {
-//		Hospital hospital1;
-//		String a= "";
-//		TypedQuery<Hospital> query = em.createQuery("select hospital from Hospital hospital where hospital.hospitalName = :hospName", Hospital.class);
-//		query.setParameter("hospName", hospName);
-////		hospital1 = query.getResultList();
-////		System.out.println(a);
-//		
-//		List<Hospital> listOfHosp = query.getResultList();
-//		for (Hospital entity : listOfHosp) {
-//		    // do something useful with entity;
-//			System.out.println(entity.getHospitalName());
-//			System.out.println(fetchHospital(entity.getHospitalName())) ;
-//			 a = fetchHospital(entity.getHospitalName());
-//		}
-////		hospital1 = query.getSingleResult();
-////		String c = hospital1.getHospitalName();
-////		String b = hospital1.getHospitalRegistrationNo();
-////		System.out.println(c+" "+b);
-//		// TODO Auto-generated method stub
-//
-//		return a;
-//	}
+
 
 
 	@Override
@@ -223,6 +200,16 @@ public class RegisterDaoImpl implements RegisterDao {
 		}
 		//hospital1 = query.getSingleResult();
 		return listOfHosp;	
+	}
+
+
+	@Override
+	public Hospital hospView(String hospMail) {
+		TypedQuery<HospitalAdmin> query = em.createQuery("select ha from HospitalAdmin ha where ha.personnelEmail = :hospMail", HospitalAdmin.class);
+		query.setParameter("hospMail", hospMail);
+		HospitalAdmin hospital = query.getSingleResult();
+		System.out.println("query.getSingleResult()---->"+hospital.getHospital().getAdmin());
+		return hospital.getHospital();
 	}
 
 

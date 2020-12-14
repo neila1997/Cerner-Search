@@ -23,33 +23,7 @@ export class RegisterService {
    return this.http.post('http://localhost:8070/adminvalidate', hospital, { responseType: 'text' })
   }
 
-  public getDetails(hospital: Hospital) {
-    var pincode = hospital.site.location.pincode
-    var options = "Select Area";
-    var xhReq = new XMLHttpRequest();
-    xhReq.open("GET", "https://api.postalpincode.in/pincode/" + pincode, false);
-    xhReq.send(null);
-    var jsonObject = JSON.parse(xhReq.responseText);
-    var b = JSON.parse(JSON.stringify(jsonObject));
-    if (jsonObject[0].Status != 'Success') {
-      hospital.site.location.district = '';
-      hospital.site.location.state = '';
-    }
-    else {
-      var city = jsonObject[0].PostOffice[0].District;
-      var state = jsonObject[0].PostOffice[0].Circle;
-      hospital.site.location.district = city;
-      hospital.site.location.state = state;
-      var i;
-
-      for (i = 0; i < jsonObject[0].PostOffice.length; i++) {
-        var area = jsonObject[0].PostOffice[i].Name;
-        options += "<option>" + area + "</option>";
-      }
-      document.getElementById("area").innerHTML = options;
-    }
-    return hospital
-  }
+  
 
   public async verifyLogin(hospital: Hospital) {
     return await this.http.post<boolean>("http://localhost:8070/verify", hospital.admin);
@@ -112,6 +86,34 @@ export class RegisterService {
       title: 'Enter valid 10 digit Mobile Number',
       showCloseButton: true
     })
+  }
+  return hospital
+}
+
+public getDetails(hospital: Hospital) {
+  var pincode = hospital.site.location.pincode
+  var options = "Select Area";
+  var xhReq = new XMLHttpRequest();
+  xhReq.open("GET", "https://api.postalpincode.in/pincode/" + pincode, false);
+  xhReq.send(null);
+  var jsonObject = JSON.parse(xhReq.responseText);
+  var b = JSON.parse(JSON.stringify(jsonObject));
+  if (jsonObject[0].Status != 'Success') {
+    hospital.site.location.district = '';
+    hospital.site.location.state = '';
+  }
+  else {
+    var city = jsonObject[0].PostOffice[0].District;
+    var state = jsonObject[0].PostOffice[0].Circle;
+    hospital.site.location.district = city;
+    hospital.site.location.state = state;
+    var i;
+
+    for (i = 0; i < jsonObject[0].PostOffice.length; i++) {
+      var area = jsonObject[0].PostOffice[i].Name;
+      options += "<option>" + area + "</option>";
+    }
+    document.getElementById("area").innerHTML = options;
   }
   return hospital
 }

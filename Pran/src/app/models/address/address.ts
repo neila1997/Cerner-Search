@@ -8,4 +8,5 @@ export class Address {
     longitute:number
     latitude:number
     area:String
+    loc_verified_ind:number
 }

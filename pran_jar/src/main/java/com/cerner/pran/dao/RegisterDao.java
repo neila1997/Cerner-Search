@@ -20,5 +20,6 @@ public interface RegisterDao {
 //	public String seeAllHospital(String hospName);
 	public List<Hospital> ah();
 	public Hospital fetchHospital(String hospName);
+	public Hospital hospView(String hospMail);
 	
 }

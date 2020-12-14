@@ -26,6 +26,7 @@ export class AdminvalidateComponent implements OnInit {
     x => {
         
         this.Hospital=x
+        console.log(this.Hospital)
       })
 
       // this.http.get<Hospital>("http://localhost:8070/testapi").subscribe(

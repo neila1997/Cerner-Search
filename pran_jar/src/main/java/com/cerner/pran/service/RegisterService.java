@@ -12,4 +12,5 @@ public interface RegisterService {
 //	public String allHospitals(String hospital);
 //	public String seeAllHospital(String hospName);
 	public List<Hospital> ah();
+	public Hospital hospView(String hospMail); 
 }

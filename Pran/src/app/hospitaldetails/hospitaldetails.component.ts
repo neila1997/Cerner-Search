@@ -94,8 +94,10 @@ export class HospitaldetailsComponent implements OnInit {
             }
           }
           j++;
+          
         }
         console.log(this.type)
+        console.log(hp)
 
       if (this.Hospital.hospitalType != '') {
         number = this.Hospital.hospitalType.split(',')
@@ -145,9 +147,30 @@ export class HospitaldetailsComponent implements OnInit {
     var c = <HTMLInputElement>document.getElementById('thirdcb');
     var d = <HTMLInputElement>document.getElementById('fourthcb');
     if (a.checked && b.checked && c.checked && d.checked) {
-      alert("all fields have been validated, kindly click on validated ")
+      //alert("all fields have been validated, kindly click on validated ")
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'all fields have been validated, kindly click on validate',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
     }
     else {
+      this.http.post<boolean>("http://localhost:8070/verifya",this.Hospital.admin.personnelEmail).subscribe(
+        
+      x=>{
+            alert("asd"); 
+        }
+      )
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Email has been send to the Hospital Admin to re-validate the data.',
+        showConfirmButton: false,
+        showCloseButton: true
+      })
+      this.router.navigate(['adminvalidate'])
       if (d.checked) {
         document.getElementById('personnel_name').style.borderColor = "green";
         document.getElementById('personnel_name').style.backgroundColor = "#9ff3b4";
@@ -301,6 +324,7 @@ export class HospitaldetailsComponent implements OnInit {
       })
     }
     else
+      
       Swal.fire({
         position: 'center',
         icon: 'error',

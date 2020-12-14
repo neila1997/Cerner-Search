@@ -7,6 +7,7 @@ import { HospitalAdminLoginComponent } from './hospital-admin-login/hospital-adm
 import { InitialLoginComponent } from './initial-login/initial-login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { CernerAdminGuardGuard } from './cerner-admin-guard.guard';
+import { HospitalViewComponent } from './hospital-view/hospital-view.component';
 
 const routes: Routes = [
   {path:'adminvalidate', component:AdminvalidateComponent, canActivate:[CernerAdminGuardGuard]}
@@ -15,6 +16,7 @@ const routes: Routes = [
   , {path:'cerneradminlogin', component:CernerAdminLoginComponent}
   , {path:'adminlogin', component:HospitalAdminLoginComponent}
   , {path:'registration', component:RegistrationComponent}
+  ,{path:'hospitalview/:name', component:HospitalViewComponent}
 ];
 
 @NgModule({

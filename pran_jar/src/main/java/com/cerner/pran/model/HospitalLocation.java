@@ -23,7 +23,7 @@ public class HospitalLocation {
 	}
 
 	public HospitalLocation(String address, String pincode, String state, String district, String town,
-			String subDistrict, int longitude, int latitude, Date ceaseDate, Date createdDate, HospitalSite site) {
+			String subDistrict, int longitude, int latitude, Date ceaseDate, Date createdDate, HospitalSite site, String area) {
 		super();
 		this.address = address;
 		this.pincode = pincode;
@@ -36,6 +36,7 @@ public class HospitalLocation {
 		this.ceaseDate = ceaseDate;
 		this.createdDate = createdDate;
 		this.site = site;
+		this.area = area;
 	}
 
 
@@ -75,10 +76,31 @@ public class HospitalLocation {
 	@Column(name="loc_created_date")
 	private Date createdDate;
 	
+	@Column(name="loc_area")
+	private String area;
+	
+	@Column(name="loc_verified_ind")
+	private int loc_verified_ind;
+	
 	@OneToOne(mappedBy = "location", fetch = FetchType.LAZY)
 	@JsonBackReference(value="loc_site")
 	private HospitalSite site;
+	
+	public int getLocverifiedInd() {
+		return loc_verified_ind;
+	}
 
+	public void setLocverifiedInd(int loc_verified_ind) {
+		this.loc_verified_ind = loc_verified_ind;
+	}
+	
+	public String getArea() {
+		return area;
+	}
+	
+	public void setArea(String area) {
+		this.area = area;
+	}
 	public String getAddress() {
 		return address;
 	}
@@ -172,7 +194,7 @@ public class HospitalLocation {
 		return "HospitalLocation [id=" + id + ", address=" + address + ", pincode=" + pincode + ", state=" + state
 				+ ", district=" + district + ", town=" + town + ", subDistrict=" + subDistrict + ", longitude="
 				+ longitude + ", latitude=" + latitude + ", ceaseDate=" + ceaseDate + ", createdDate=" + createdDate
-				+ "]";
+				+ ", area=" + area + "]";
 	}
 	
 }

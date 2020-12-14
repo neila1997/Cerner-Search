@@ -1,5 +1,6 @@
 package com.cerner.pran.controller;
 
+import java.net.URLEncoder;
 import java.util.List;
 
 import org.json.JSONException;
@@ -55,6 +56,9 @@ public class HospitalController {
 	
 	@PostMapping(path="/validatehospital")
 	public ResponseEntity<Boolean> validateHospital(@RequestBody HospitalAdmin admin){
+		//Hospital hospital = null;
+		//hospital.setVerifiedInd(1);
+		
 		return new ResponseEntity<Boolean>(register.sendRegistrationMail(admin), HttpStatus.OK);
 	}
 	
@@ -143,5 +147,39 @@ public class HospitalController {
 		System.out.println(httpEntity.getBody());
 		return new ResponseEntity<Hospital>(dao1.getHospitalDetails(httpEntity.getBody()),HttpStatus.OK);
 	}
+	
+//	@GetMapping(path="/hospview")
+//	public ResponseEntity<Hospital> hospviewdet(HttpEntity<String> httpEntity)
+//	{	
+//		HospitalAdmin admin = null;
+//		return new ResponseEntity<Hospital>(register.hospView(admin.getPersonnelEmail()),HttpStatus.OK);
+//	}
 
+	
+	@GetMapping(path="/hospview")
+	public ResponseEntity<Hospital> hospviewdet(@RequestParam("email") String email)
+	{	
+		//name = "arpitlall20@gmail.com";
+		System.out.println(email);
+		email = this.utilities.passwordDecrypter(email).trim();
+		
+		System.out.println(email);
+		return new ResponseEntity<Hospital>(register.hospView(email),HttpStatus.OK);
+	}
+	
+	@PostMapping(path="/verifya")
+	public ResponseEntity<Boolean> cernAdminLogin1(@RequestBody String email) {
+		JSONObject jsonObject = null;
+		boolean t;
+		System.out.println("testing");
+		String append = this.utilities.passwordEncrypter(email).trim();
+		System.out.println(append);
+		String replace = append.replaceAll("/","%2F");
+		String replace1 = replace.replaceAll("=","%3D");
+		String replace2 = replace1.replaceAll("\\+","%2B");
+		System.out.println(replace1);
+		t = this.utilities.mailSender(email, "Please re-enter your data" , "http://localhost:4200/hospitalview/"+replace2);
+		
+		return new ResponseEntity<Boolean>(t,HttpStatus.OK);
+	}
 }

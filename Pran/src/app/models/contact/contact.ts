@@ -8,4 +8,5 @@ export class Contact {
     primaryEmailId:string
     secondaryEmailId:string
     websiteUrl:string
+    contVerifiedInd:number
 }

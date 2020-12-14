@@ -13,6 +13,7 @@ import { InitialLoginComponent } from './initial-login/initial-login.component';
 import { HospitaldetailsComponent } from './hospitaldetails/hospitaldetails.component';
 import { CernerAdminLoginComponent } from './cerner-admin-login/cerner-admin-login.component';
 import { HospitalAdminLoginComponent } from './hospital-admin-login/hospital-admin-login.component';
+import { HospitalViewComponent } from './hospital-view/hospital-view.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HospitalAdminLoginComponent } from './hospital-admin-login/hospital-adm
     InitialLoginComponent,
     HospitaldetailsComponent,
     CernerAdminLoginComponent,
-    HospitalAdminLoginComponent
+    HospitalAdminLoginComponent,
+    HospitalViewComponent
   ],
   imports: [
     BrowserModule,

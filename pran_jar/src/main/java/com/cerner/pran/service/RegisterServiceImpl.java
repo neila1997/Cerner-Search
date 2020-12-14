@@ -71,6 +71,14 @@ public class RegisterServiceImpl implements RegisterService {
 		
 	}
 
+	@Override
+	public Hospital hospView(String hospMail) {
+		// TODO Auto-generated method stub
+		return repo.hospView(hospMail);
+	}
+
+
+
 
 
 

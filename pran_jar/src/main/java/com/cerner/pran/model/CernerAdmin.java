@@ -45,7 +45,10 @@ public class CernerAdmin {
 	
 	@Column(name="admin_last_login")
 	private Date lastLoginDate;
+	
+	
 
+	
 	public String getPersonnelName() {
 		return personnelName;
 	}

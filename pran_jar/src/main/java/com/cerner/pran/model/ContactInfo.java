@@ -86,6 +86,9 @@ public class ContactInfo {
 	@Column(name="cont_cease_date")
 	private Date ceasedDate;
 	
+	@Column(name="cont_verified_ind")
+	private int contVerifiedInd;
+	
 	@OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	@JoinColumn(name="cont_hosp_id")
 	@JsonBackReference(value = "hosp_contact")
@@ -95,7 +98,15 @@ public class ContactInfo {
 	@JoinColumn(name="cont_site_id")
 	@JsonIgnore()
 	private HospitalSite hospitalSite ;
+	
+	public int getcontVerifiedInd() {
+		return contVerifiedInd;
+	}
 
+	public void setcontVerifiedInd(int contVerifiedInd) {
+		this.contVerifiedInd = contVerifiedInd;
+	}
+	
 	public String getMobileNo() {
 		return mobileNo;
 	}

@@ -112,7 +112,9 @@ public class HospitalAdmin {
 	@Override
 	public String toString() {
 		return "HospitalAdmin [id=" + id + ", personnelName=" + personnelName + ", personnelEmail=" + personnelEmail
-				+ ", personnelNumber=" + personnelNumber + ", personnelPassword=" + personnelPassword + "]";
+				+ ", personnelNumber=" + personnelNumber + ", personnelPassword=" + personnelPassword
+				+ ", lastLoginDate=" + lastLoginDate + ", hospital=" + hospital + "]";
 	}
+	
 	
 }

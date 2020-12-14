@@ -45,10 +45,8 @@
             <div class="col col-md-7">
                 <div class="row">
                     <div *ngFor="let type of hospitalType; let i=index" class="col col-md-4">
-                        <ng-container *ngFor="let type1 of number">
-                        </ng-container>
                         <label>
-                            <input type="checkbox" [value]="type" id ="type"> {{type}}
+                            <input type="checkbox" [value]="type" id ="type" (change)="mapType($event)"> {{type}}
                         </label>
                     </div>
                 </div>
