@@ -8,6 +8,7 @@ import { InitialLoginComponent } from './initial-login/initial-login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { CernerAdminGuardGuard } from './cerner-admin-guard.guard';
 import { HospitalViewComponent } from './hospital-view/hospital-view.component';
+import { AdminLandingPageComponent } from './admin-landing-page/admin-landing-page.component';
 
 const routes: Routes = [
   {path:'adminvalidate', component:AdminvalidateComponent, canActivate:[CernerAdminGuardGuard]}
@@ -15,6 +16,7 @@ const routes: Routes = [
   , {path:'initiallogin', component:InitialLoginComponent}
   , {path:'cerneradminlogin', component:CernerAdminLoginComponent}
   , {path:'adminlogin', component:HospitalAdminLoginComponent}
+  , {path:'adminhome', component:AdminLandingPageComponent}
   , {path:'registration', component:RegistrationComponent}
   ,{path:'hospitalview/:name', component:HospitalViewComponent}
 ];

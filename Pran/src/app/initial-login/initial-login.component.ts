@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, ControlContainer, Form, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Admin } from '../models/admin/admin';
 import { DataService } from '../service/data/data.service';
 import { RegisterService } from '../service/register/register.service';
@@ -21,7 +22,7 @@ export class InitialLoginComponent implements OnInit {
 
     ;
 
-  constructor(public data: DataService, public register: RegisterService, public http: HttpClient, public title: Title, public formBuilder: FormBuilder) {
+  constructor(public data: DataService, public register: RegisterService, public http: HttpClient, public title: Title, public formBuilder: FormBuilder, private route:Router) {
     this.verificationForm = this.formBuilder.group({
       password1: ''
       , password2: ''
@@ -63,7 +64,9 @@ export class InitialLoginComponent implements OnInit {
   }
 
   updatePassword(){
-    this.register.updatePassword(this.admin).subscribe(x=>console.log(x))
+    this.register.updatePassword(this.admin).subscribe(x=>{
+      this.route.navigate(['adminlogin'])
+    })
   }
 
 }

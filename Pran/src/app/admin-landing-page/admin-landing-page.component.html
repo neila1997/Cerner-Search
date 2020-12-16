@@ -1,0 +1,52 @@
+<div class="container border top-buffer padding-buffer">
+    <div class="row">
+        <div class="form-group col col-md-6">
+            <input type="button" class="btn btn-outline-cerner" value="View Procedures">
+        </div>
+        <div class="form-group col col-md-6">
+            <input type="button" class="btn btn-outline-cerner" value="Add a Procedure" (click)="addProcedure()">
+        </div>
+    </div>
+</div>
+
+
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<!-- Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Add a Procedure</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="form-class">
+                    <div class="form-group row">
+                        <label for="proc_type" class="col col-md-5 col-form-label">Procedure Type</label>
+                        <select type="" class="form-control col col-md-6" name="proc_type"
+                            title="Select Procedure Type">
+                            <option *ngFor="let proc of procedureType">{{proc}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label for="proc_type" class="col col-md-5 col-form-label">Procedure Name</label>
+                        <ng-container *ngFor="let type of procedureType;let i = index">
+                            <input type="text" class="form-control col col-md-6" name="proc_type" [value]="i">
+                        </ng-container>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-cerner" data-dismiss="modal"
+                    [routerLink]="['/adminhome']">Admin Home Page</button>
+            </div>
+
+        </div>
+    </div>
+</div>

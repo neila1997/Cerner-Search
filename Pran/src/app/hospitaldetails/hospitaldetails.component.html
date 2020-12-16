@@ -27,15 +27,15 @@
                 <legend class="col-form-label col col-md-5 pt-0">Hospital Type<span class="required">*</span></legend>
                 <div class="col col-md-7">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" [(ngModel)]="Hospital.institutionType" name="radio1" id="radio1" value="Government/Public" disabled
-                            placeholder="">
+                        <input class="form-check-input" type="radio" [(ngModel)]="Hospital.institutionType"
+                            name="radio1" id="radio1" value="Government/Public" disabled placeholder="">
                         <label class="form-check-label" for="radio1">
                             Government/Public
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radio1" [(ngModel)]="Hospital.institutionType" id="radio1" value="Private" disabled
-                            placeholder="">
+                        <input class="form-check-input" type="radio" name="radio1"
+                            [(ngModel)]="Hospital.institutionType" id="radio1" value="Private" disabled placeholder="">
                         <label class="form-check-label" for="radio1">
                             Private
                         </label>
@@ -47,8 +47,8 @@
             <label for="accreditation" class="col col-md-5 col-form-label">Accreditation<span
                     class="required">*</span></label>
             <div class="col col-md-7">
-                <textarea class="form-control" id="accreditation" name="accreditation" rows="3" disabled
-                    placeholder="" [(ngModel)]="Hospital.hospitalAccredition"></textarea>
+                <textarea class="form-control" id="accreditation" name="accreditation" rows="3" disabled placeholder=""
+                    [(ngModel)]="Hospital.hospitalAccredition"></textarea>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
                 <div class="row">
                     <div *ngFor="let t of type; let i=index" class="col col-md-4">
                         <label>
-                            <input type="checkbox" [value]="t.type" [checked] = "t.checked" disabled id="type"> {{t.type}}
+                            <input type="checkbox" [value]="t.type" [checked]="t.checked" disabled id="type"> {{t.type}}
                         </label>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                     class="required">*</span></label>
             <div class="col col-md-7">
                 <input type="text" class="form-control" id="registrationNo" name="registrationNo" disabled
-                    placeholder="" [(ngModel)]="Hospital.hospitalRegistrationNo"> 
+                    placeholder="" [(ngModel)]="Hospital.hospitalRegistrationNo">
             </div>
         </div>
 
@@ -114,7 +114,8 @@
                 <label for="district" class="col col-md-3 col-form-label">District<span
                         class="required">*</span></label>
                 <div class="col col-md-3">
-                    <input type="text" class="form-control" id="city" name="city" disabled placeholder="City" required [(ngModel)]="Hospital.site.location.district">
+                    <input type="text" class="form-control" id="city" name="city" disabled placeholder="City" required
+                        [(ngModel)]="Hospital.site.location.district">
 
                 </div>
                 <label for="state" class="col col-md-3 col-form-label">State<span class="required">*</span></label>
@@ -126,7 +127,8 @@
             <div class="form-group row">
                 <label for="area" class="col col-md-3 col-form-label"> Area</label>
                 <div class="col col-md-9">
-                    <input name="area" type="text" class="form-control" [(ngModel)]="Hospital.site.location.area" id="area" disabled>
+                    <input name="area" type="text" class="form-control" [(ngModel)]="Hospital.site.location.area"
+                        id="area" disabled>
                 </div>
             </div>
         </div>
@@ -149,11 +151,13 @@
                     Telephone / Landline <span class="required">*</span></label>
                 <div class="col col-md-2 offset-md-2">
                     <input class="form-control" type="text" id="hospital_telephone_country"
-                        name="hospital_telephone_country" placeholder="STD Code" disabled placeholder="" [(ngModel)]="telephone.landlineStd">
+                        name="hospital_telephone_country" placeholder="STD Code" disabled placeholder=""
+                        [(ngModel)]="telephone.landlineStd">
                 </div>
                 <div class="col col-md-3">
                     <input class="form-control" type="text" id="hospital_telephone_no" name="hospital_telephone_no"
-                        placeholder="Landline Number" [(ngModel)]="Hospital.contact.landlineNo"disabled placeholder="" [(ngModel)]="telephone.landlineNo">
+                        placeholder="Landline Number" [(ngModel)]="Hospital.contact.landlineNo" disabled placeholder=""
+                        [(ngModel)]="telephone.landlineNo">
                 </div>
             </div>
         </div>
@@ -223,13 +227,13 @@
                     <input class="form-control" type="text" id="hospital_toll_free_country"
                         name="hospital_toll_free_country" placeholder="STD Code"
                         onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
-                        maxlength="5" disabled placeholder="" >
+                        maxlength="5" disabled placeholder="">
                 </div>
                 <div class="col col-md-3">
                     <input class="form-control" type="text" id="hospital_toll_free_no" name="hospital_toll_free_no"
                         placeholder="Toll Free Number"
                         onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));"
-                        minlength="10" maxlength="10" disabled placeholder="" >
+                        minlength="10" maxlength="10" disabled placeholder="">
                 </div>
             </div>
         </div>
@@ -263,7 +267,8 @@
                 </div>
                 <div class="col col-md-5 offset-md-2">
                     <input class="form-control" type="email" id="hospital_secondary_email"
-                        name="hospital_secondary_email" disabled placeholder="" [(ngModel)]="Hospital.contact.secondaryEmailId">
+                        name="hospital_secondary_email" disabled placeholder=""
+                        [(ngModel)]="Hospital.contact.secondaryEmailId">
                 </div>
             </div>
         </div>
@@ -341,7 +346,8 @@
                             (click)="sendback()">
                     </div>
                     <div class="col col-md-4">
-                        <input class="btn btn-outline-cerner btn-xl" type="submit" value="Validate" (click)="sendForValidation()">
+                        <input class="btn btn-outline-cerner btn-xl" type="submit" value="Validate"
+                            (click)="sendForValidation()">
                     </div>
                 </div>
             </div>
@@ -353,28 +359,26 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal">
     <div class="modal-dialog">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Validation Completed</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Validation Completed</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                The verification for {{Hospital.hospitalName}} has been completed! A registration mail has been sent to
+                the admin at the email id {{Hospital.admin.personnelEmail}}
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-cerner" data-dismiss="modal"
+                    [routerLink]="['/adminvalidate']">Admin Main Page</button>
+            </div>
+
         </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          The verification for {{Hospital.hospitalName}} has been completed! A registration mail has been sent to the admin at the email id {{Hospital.admin.personnelEmail}}
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-cerner" data-dismiss="modal" [routerLink]="['/adminvalidate']">Admin Main Page</button>
-        </div>
-  
-      </div>
     </div>
-  </div>
-
-
-
-  
+</div>

@@ -36,8 +36,8 @@ export class HospitalAdminLoginComponent implements OnInit {
       this.data.admin.next(x)
       if (x.lastLogin === null)
         this.router.navigate(['initiallogin'])
-      // else
-      //  //this.router.navigate([''])
+      else
+        this.router.navigate(['adminhome'])
       //  //alert(this.email1)
       //  this.router.navigate(['hospitalview/'+this.login.email]) 
     //     this.http.get<Hospital>("http://localhost:8070/hospview?email="+this.login.email,{responseType:'json'}).subscribe(
