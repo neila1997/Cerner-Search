@@ -22,4 +22,6 @@ public interface RegisterDao {
 	public Hospital fetchHospital(String hospName);
 	public Hospital hospView(String hospMail);
 	
+	public boolean Register(String hosp);
+	
 }

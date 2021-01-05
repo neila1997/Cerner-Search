@@ -182,4 +182,18 @@ public class HospitalController {
 		
 		return new ResponseEntity<Boolean>(t,HttpStatus.OK);
 	}
+	
+	@PostMapping(path="/mapprocedure")
+	public ResponseEntity<Boolean> mapProcedure(@RequestBody String procedures){
+		JSONObject json = null;
+		try {
+			json = new JSONObject(procedures);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} 
+		System.out.println(json);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	
+	}
+	
 }

@@ -2,3 +2,25 @@
     border-color:#0072B8;
     box-shadow: inset 0 1px 1px #0072B8, 0 0 8px #0072B8;
   }
+
+  .modal-border{
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .modal {
+    overflow-y:auto;
+  }
+
+  .margin-right{
+    margin-right: 40px;
+  }
+
+  .modal-header{
+    background-color: #0072B8;
+    color: whitesmoke;
+  }  
+
+  .modal-header>.close{
+    color: whitesmoke;
+  }

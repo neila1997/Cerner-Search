@@ -117,5 +117,4 @@ public getDetails(hospital: Hospital) {
   }
   return hospital
 }
-
 }

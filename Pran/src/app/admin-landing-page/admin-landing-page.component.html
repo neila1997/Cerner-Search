@@ -4,47 +4,175 @@
             <input type="button" class="btn btn-outline-cerner" value="View Procedures">
         </div>
         <div class="form-group col col-md-6">
-            <input type="button" class="btn btn-outline-cerner" value="Add a Procedure" (click)="addProcedure()">
+            <input type="button" class="btn btn-outline-cerner" value="Add a Procedure" (click)="openModal1()">
         </div>
     </div>
 </div>
 
 
-<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<button id="openModal1Button" [hidden]="true" data-toggle="modal" data-target="#myModal1" data-backdrop="static"
+    data-keyboard="false">Open Modal</button>
+
 <!-- Modal -->
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog">
+<div class="modal fade" id="myModal1">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title text-center">Add a Procedure</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" id="closeModal1" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
-                <form class="form-class">
+                <form class="form-class" [formGroup]="procedureForm">
+                    <div class="top-buffer h5 head">
+                        Enter The Procedure Details
+                    </div>
                     <div class="form-group row">
                         <label for="proc_type" class="col col-md-5 col-form-label">Procedure Type</label>
                         <select type="" class="form-control col col-md-6" name="proc_type"
-                            title="Select Procedure Type">
+                            formControlName="procedureType" title="Select Procedure Type">
+                            <option disabled selected value> -- select an option -- </option>
                             <option *ngFor="let proc of procedureType">{{proc}}</option>
                         </select>
                     </div>
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="proc_type" class="col col-md-5 col-form-label">Procedure Name</label>
                         <ng-container *ngFor="let type of procedureType;let i = index">
                             <input type="text" class="form-control col col-md-6" name="proc_type" [value]="i">
                         </ng-container>
+                    </div> -->
+
+                    <div class="form-group row">
+                        <label for="proc_type" class="col col-md-5 col-form-label">Procedure Name</label>
+                        <input type="text" class="col col-md-6 form-control" formControlName="procedureName">
                     </div>
+                    <!-- {{this.procedureForm.value | json}} -->
                 </form>
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-cerner" data-dismiss="modal"
-                    [routerLink]="['/adminhome']">Admin Home Page</button>
+                <button type="button" class="btn btn-outline-success mx-auto" (click)="openModal2()">Next</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<button id="openModal2Button" [hidden]="true" data-toggle="modal" data-target="#myModal2" data-backdrop="static"
+    data-keyboard="false">Open Modal</button>
+<!-- Modal -->
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Add a Procedure</h4>
+                <button type="button" id="closeModal2" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="form-class" [formGroup]="procedureForm">
+                    <div class="top-buffer h5 head">
+                        Select the Room Types and their Costs
+                    </div>
+                    <div formArrayName="costs">
+                        <div *ngFor="let item of costs.controls; let pointIndex=index" [formGroupName]="pointIndex"
+                            class="border modal-border">
+                            <div class="form-group row">
+                                <label for="room_type" class="col col-md-5 col-form-label">Room Type</label>
+                                <select type="" class="form-control col col-md-6" name="room_type"
+                                    title="Select Room Type" formControlName="roomType">
+                                    <option disabled selected value> -- select an option -- </option>
+                                    <option *ngFor="let room of roomType">{{room}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <label for="room_cost" class="col col-md-5 col-form-label">Room Cost</label>
+
+                                <input type="number" class="col col-md-6 form-control" formControlName="cost">
+                            </div>
+                            <div class="form-group row">
+                                <button class="mx-auto btn btn-outline-danger" (click)="deleteCost(pointIndex)">Delete
+                                    Room</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <button class="btn btn-outline-success ml-auto margin-right" (click)="addCost()">Add
+                            Room</button>
+                    </div>
+                    <!-- {{this.procedureForm.value | json}} -->
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success mx-auto" (click)="openModal1()">Previous</button>
+                <button type="button" class="btn btn-outline-success mx-auto" (click)="openModal3()">Next</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<button id="openModal3Button" [hidden]="true" data-toggle="modal" data-target="#myModal3" data-backdrop="static"
+    data-keyboard="false">Open Modal</button>
+<!-- Modal -->
+<div class="modal fade" id="myModal3">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Add a Procedure</h4>
+                <button type="button" id="closeModal3" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form class="form-class" [formGroup]="procedureForm">
+
+                    <div class="top-buffer h5 head">
+                        Enter the Personnel Details
+                    </div>
+                    <div formArrayName="personnels">
+                        <div *ngFor="let personnel of personnels.controls; let i=index" [formGroupName]="i"
+                            class="border modal-border">
+                            <div class="form-group row">
+                                <label for="room_cost" class="col col-md-5 col-form-label">Personnel Name</label>
+
+                                <input type="text" class="col col-md-6 form-control" formControlName="doctorName">
+                            </div>
+                            <div class="form-group row">
+                                <label for="room_cost" class="col col-md-5 col-form-label">License Number</label>
+
+                                <input type="number" class="col col-md-6 form-control" formControlName="doctorIdentifier">
+                            </div>
+                            <div class="form-group row">
+                                <button class="mx-auto btn btn-outline-danger" (click)="deletePersonnel(i)">Delete
+                                    Personnel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <button class="btn btn-outline-success ml-auto margin-right" (click)="addPersonnel()">Add
+                            Personnel</button>
+                    </div>
+                    <!-- {{this.procedureForm.value | json}} -->
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success mx-auto" (click)="openModal2()">Previous</button>
+                <button type="button" class="btn btn-outline-success mx-auto" (click)="mapProcedures()" data-dismiss="modal">Add the
+                    Procedures</button>
             </div>
 
         </div>

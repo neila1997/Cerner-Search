@@ -213,6 +213,13 @@ public class RegisterDaoImpl implements RegisterDao {
 	}
 
 
+	@Override
+	public boolean Register(String hosp) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 
 	
 
